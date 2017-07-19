@@ -1,0 +1,46 @@
+var Alexa = require('alexa-sdk');
+
+exports.handler = function(event, context, callback) {
+    var alexa = Alexa.handler(event, context);
+
+    // alexa.appId = 'amzn1.echo-sdk-ams.app.1234';
+
+    // alexa.dynamoDBTableName = 'YourTableNameUK'; // creates new table for session.attributes
+
+    alexa.registerHandlers(handlers);
+    alexa.execute();
+};
+
+var handlers = {
+    'LaunchRequest': function () {
+        this.emit('ITInfoIntent');
+    },
+    
+    'FactsIntent': function() {
+        this.emit(':tell', 'P S E G, or Public Service Enterprise group is the main energy distributor for New Jersey and Long Island. The company has been around since 1902 and is one of the 10 largest Utilities companies in the country. Wow, that is impressive!');
+    },
+    
+    'BestTeamIntent': function(){
+        this.emit(':tell', 'The I T department is the best department at P S E G, that is where you can find all the best looking interns and employees.');
+    },
+    
+    'IfYouWereRealIntent': function(){
+        this.emit(':tell', 'If I could have a job I would definitely work in the I T department at P S E G. They are the smartest, funniest, and best looking group of employees. I cant even see and I know that.');
+    },
+    
+    'ITInfoIntent': function(){
+        this.emit(':tell', 'The I T department at PSEG is made up of a number of different sub teams such as Network Operations, Security, A P O, I P O, CeeSo, Quality Assurance, and others. They are responsible for large scale technology projects which ensure that customers have the best experience when using our applications and services.');
+    },
+    
+    'CafInfoIntent': function(){
+        this.emit(':tell', 'The P S E G Cafeteria is located on the 2nd floor. It has a variety of food and drinks to satisfy the hungry employee.');
+    },
+    
+    'WheretoEatIntent': function(){
+        this.emit(':tell', 'By far the best place to eat in Newark is the Halal guys on halsey street. If youre a bum, you can also get chipotle');
+    },
+    
+    'PSEGguideIntent': function(){
+        this.emit(':tell', 'Welcome to the P S E G guide, how can i help you today?');
+    }
+};
